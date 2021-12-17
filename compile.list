@@ -1,0 +1,10 @@
+-d ./bin
+
+src/client/Client.java
+src/client/threads/Emitter.java
+src/client/threads/Recepter.java
+
+src/serveur/Serveur.java
+
+src/utils/Ansii.java
+src/utils/Message.java
