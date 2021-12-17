@@ -1,2 +1,2 @@
 # YChat
-Le nom de l'application provient de Lothaire Guée
+Une application de communication en réseau.
