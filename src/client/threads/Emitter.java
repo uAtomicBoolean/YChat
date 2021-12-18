@@ -33,7 +33,10 @@ public class Emitter implements Runnable
 		while ( true )
 		{
 			msg = sc.nextLine();
-			try { this.out.writeObject( new Message( msg ) ); }
+			try { 
+				this.out.writeObject( new Message( msg ) );
+				this.out.reset(); 
+			}
 			catch( IOException e ) { e.printStackTrace(); sc.close(); }
 		}
 	}

@@ -6,6 +6,8 @@ import client.threads.Recepter;
 import java.io.IOException;
 import java.net.Socket;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 
 /**
  * Classe du principale du Client.
@@ -35,8 +37,8 @@ public class Client
 	}
 
 
-	public Client() { this( "localhost", 6000 ); }
-	public Client( String addr ) { this( addr, 6000 ); }
+	public Client() { this( "127.0.0.1", 9000 ); }
+	public Client( String addr ) { this( addr, 9000 ); }
 	public Client( int port ) { this( "localhost", port ); }
 
 
