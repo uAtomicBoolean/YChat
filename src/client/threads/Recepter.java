@@ -1,8 +1,7 @@
 package client.threads;
 
 import client.Client;
-
-import utils.Message;
+import message.Message;
 
 import java.io.ObjectInputStream;
 import java.io.IOException;

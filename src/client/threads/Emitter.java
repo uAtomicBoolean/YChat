@@ -1,8 +1,7 @@
 package client.threads;
 
 import client.Client;
-
-import utils.Message;
+import message.Message;
 
 import java.util.Scanner;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class Emitter implements Runnable
 		while ( true )
 		{
 			msg = sc.nextLine();
-			try { this.out.writeObject( new Message( this.client, msg ) ); }
+			try { this.out.writeObject( new Message( msg ) ); }
 			catch( IOException e ) { e.printStackTrace(); sc.close(); }
 		}
 	}
