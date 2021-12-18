@@ -5,6 +5,9 @@ import client.Client;
 import java.io.Serializable;
 
 
+/**
+ * Classe contenant les informations d'un envoyé par un client. 
+ */
 public class Message implements Serializable
 {
 	private Client auteur;

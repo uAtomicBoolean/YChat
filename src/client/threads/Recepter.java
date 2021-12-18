@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.IOException;
 
 
+/**
+ * Thread recevant les messages du serveur et les affichants dans la console.
+ */
 public class Recepter implements Runnable
 {
 	private Client client;

@@ -13,6 +13,11 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 
+/**
+ * Classe principale du serveur.
+ * Le serveur se lance avec des paramètres par défauts qui correspondent avec
+ * ceux des clients, mais il peut prendre des paramètres supplémentaire pour les changer.
+ */
 public class Serveur
 {
 	private ServerSocket ss;
@@ -60,6 +65,10 @@ public class Serveur
 	}
 
 
+	/**
+	 * Thread écoutant un client pour ensuite renvoyer le message reçu aux autres clients.
+	 * @param client Le socket de la connexion avec le client.
+	 */
 	public void receiver( Socket client )
 	{
 		new Thread( new Runnable() {
@@ -81,6 +90,11 @@ public class Serveur
 	}
 
 
+	/**
+	 * Envoi à tout les clients qui ne sont pas le client 'sender' le message passé en paramètre.
+	 * @param sender Le socket de la connexion avec l'envoyeur du message.
+	 * @param msg Le message à transférer aux autres clients.
+	 */
 	public void sendToClients( Socket sender, Message msg )
 	{
 		for ( Socket client: this.clients )

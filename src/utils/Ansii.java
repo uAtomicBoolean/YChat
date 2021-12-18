@@ -1,6 +1,9 @@
 package utils;
 
 
+/**
+ * Juste une classe contenant des codes ANSII pour l'affichage dans la console.
+ */
 public class Ansii 
 {
 	public static final String RESET = "\033[0m";
