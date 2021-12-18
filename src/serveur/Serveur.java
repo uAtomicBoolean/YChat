@@ -1,17 +1,14 @@
 package serveur;
 
 import utils.Ansii;
+import message.Message;
+import serveur.threads.ClientServeur;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.IOException;
 
 import java.net.ServerSocket;
-import java.net.Socket;
 
 import java.util.ArrayList;
-
-import message.Message;
 
 
 /**
@@ -23,15 +20,15 @@ public class Serveur
 {
 	private ServerSocket ss;
 
-	private ArrayList<Socket> clients;
+	private ArrayList<ClientServeur> clients;
 
 
 	public Serveur()
 	{
-		this.clients = new ArrayList<Socket>();
+		this.clients = new ArrayList<ClientServeur>();
 		try 
 		{ 
-			this.ss = new ServerSocket( 6000 );
+			this.ss = new ServerSocket( 9000, 50 );
 		}
 		catch( IOException e ) { e.printStackTrace(); }
 
@@ -41,15 +38,17 @@ public class Serveur
 
 	public void run()
 	{
-		Socket client = null;
+		ClientServeur client = null;
 		while ( true )
 		{
 			try
 			{
-				client = this.ss.accept();
+				System.out.println( "test");
+				client = new ClientServeur( this, this.ss.accept() );
+				System.out.println( "ttest");
 				
 				// Envoi de la bannière du serveur.
-				new ObjectOutputStream( client.getOutputStream() ).writeObject( new Message( Ansii.YELLOW_FG + Ansii.BLINK + 
+				client.sendMessage( new Message( Ansii.YELLOW_FG + Ansii.BLINK + 
 					"_____.___._________   ___ ___    ________________\n" +
 					"\\__  |   |\\_   ___ \\ /   |   \\  /  _  \\__    ___/\n" +
 					" /   |   |/    \\  \\//    ~    \\/  /_\\  \\|    |\n" +
@@ -59,35 +58,10 @@ public class Serveur
 				));
 
 				this.clients.add( client );
-				this.receiver( client );
+				new Thread( client ).start();
 			}
 			catch( IOException e ) { e.printStackTrace(); }
 		}
-	}
-
-
-	/**
-	 * Thread écoutant un client pour ensuite renvoyer le message reçu aux autres clients.
-	 * @param client Le socket de la connexion avec le client.
-	 */
-	public void receiver( Socket client )
-	{
-		new Thread( new Runnable() {
-			public void run()
-			{
-				ObjectInputStream in;
-				try 
-				{
-					in = new ObjectInputStream( client.getInputStream() );
-					while ( true )
-					{
-						sendToClients( client, (Message)in.readObject() );
-					}
-				}
-				catch ( IOException e ) { e.printStackTrace(); }
-				catch ( ClassNotFoundException e ) { e.printStackTrace(); }
-			}
-		}).start();
 	}
 
 
@@ -96,15 +70,12 @@ public class Serveur
 	 * @param sender Le socket de la connexion avec l'envoyeur du message.
 	 * @param msg Le message à transférer aux autres clients.
 	 */
-	public void sendToClients( Socket sender, Message msg )
+	public void sendToClients( ClientServeur sender, Message msg )
 	{
-		for ( Socket client: this.clients )
+		for ( ClientServeur client: this.clients )
 		{
 			if ( client != sender )
-			{
-				try { new ObjectOutputStream( client.getOutputStream() ).writeObject( msg ); }
-				catch( IOException e ) { e.printStackTrace(); }
-			}
+				client.sendMessage( msg );
 		}
 	}
 
