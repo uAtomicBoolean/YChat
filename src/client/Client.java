@@ -9,6 +9,12 @@ import java.net.Socket;
 
 // TODO ajouter un objet Auteur qui contient les informations de l'auteur.
 // Pour plus tard, ajouter un objet pour pouvoir envoyer un message directement au client.
+/**
+ * Classe du principale du Client.
+ * Il permet de se connecter à un serveur et de converser avec d'autres clients.
+ * Des paramètres de bases sont présents pour la connexion au serveur mais il peut prendre d'autres paramètres
+ * lors du lancement.
+ */
 public class Client
 {
 	private Socket s;

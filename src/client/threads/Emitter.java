@@ -9,6 +9,10 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
+/** 
+ * Thread s'occupant d'écouter l'entrée au clavier de l'utilisateur et d'envoyer 
+ * les messages au serveur.
+ */
 public class Emitter implements Runnable
 {
 	private ObjectOutputStream out;
@@ -31,7 +35,7 @@ public class Emitter implements Runnable
 		{
 			msg = sc.nextLine();
 			try { this.out.writeObject( new Message( this.client, msg ) ); }
-			catch( IOException e ) { e.printStackTrace(); }
+			catch( IOException e ) { e.printStackTrace(); sc.close(); }
 		}
 	}
 }
