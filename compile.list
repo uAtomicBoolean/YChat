@@ -7,4 +7,6 @@ src/client/threads/Recepter.java
 src/serveur/Serveur.java
 
 src/utils/Ansii.java
-src/utils/Message.java
+
+src/message/Message.java
+src/message/Auteur.java

@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.net.Socket;
 
 
-// TODO ajouter un objet Auteur qui contient les informations de l'auteur.
-// Pour plus tard, ajouter un objet pour pouvoir envoyer un message directement au client.
 /**
  * Classe du principale du Client.
  * Il permet de se connecter à un serveur et de converser avec d'autres clients.
@@ -22,11 +20,11 @@ public class Client
 	private Emitter out;
 
 
-	public Client()
+	public Client( String addr, int port )
 	{
 		try
 		{
-			this.s = new Socket( "localhost", 6000 );
+			this.s = new Socket( addr, port );
 			this.in = new Recepter( this );
 			this.out = new Emitter( this );
 
@@ -37,6 +35,14 @@ public class Client
 	}
 
 
+	public Client() { this( "localhost", 6000 ); }
+	public Client( String addr ) { this( addr, 6000 ); }
+	public Client( int port ) { this( "localhost", port ); }
+
+
+	/* ------------------------------------------------------ */
+	/* METHODES                                               */
+	/* ------------------------------------------------------ */
 	public Socket getSocket() { return this.s; }
 
 

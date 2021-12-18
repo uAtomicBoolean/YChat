@@ -1,7 +1,6 @@
 package serveur;
 
 import utils.Ansii;
-import utils.Message;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -11,6 +10,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import java.util.ArrayList;
+
+import message.Message;
 
 
 /**
@@ -48,7 +49,7 @@ public class Serveur
 				client = this.ss.accept();
 				
 				// Envoi de la bannière du serveur.
-				new ObjectOutputStream( client.getOutputStream() ).writeObject( new Message( null, Ansii.YELLOW_FG + Ansii.BLINK + 
+				new ObjectOutputStream( client.getOutputStream() ).writeObject( new Message( Ansii.YELLOW_FG + Ansii.BLINK + 
 					"_____.___._________   ___ ___    ________________\n" +
 					"\\__  |   |\\_   ___ \\ /   |   \\  /  _  \\__    ___/\n" +
 					" /   |   |/    \\  \\//    ~    \\/  /_\\  \\|    |\n" +
