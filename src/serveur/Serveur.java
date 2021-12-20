@@ -5,7 +5,7 @@ import message.Message;
 import serveur.threads.ClientServeur;
 
 import java.io.IOException;
-
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 
 import java.util.ArrayList;
@@ -26,10 +26,7 @@ public class Serveur
 	public Serveur()
 	{
 		this.clients = new ArrayList<ClientServeur>();
-		try 
-		{ 
-			this.ss = new ServerSocket( 9000, 50 );
-		}
+		try { this.ss = new ServerSocket( 6000 ); }
 		catch( IOException e ) { e.printStackTrace(); }
 
 		this.run();
@@ -43,9 +40,7 @@ public class Serveur
 		{
 			try
 			{
-				System.out.println( "test");
 				client = new ClientServeur( this, this.ss.accept() );
-				System.out.println( "ttest");
 				
 				// Envoi de la bannière du serveur.
 				client.sendMessage( new Message( Ansii.YELLOW_FG + Ansii.BLINK + 
@@ -59,6 +54,8 @@ public class Serveur
 
 				this.clients.add( client );
 				new Thread( client ).start();
+
+				System.out.println( "Nouveau client connecté!" );
 			}
 			catch( IOException e ) { e.printStackTrace(); }
 		}
