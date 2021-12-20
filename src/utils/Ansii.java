@@ -36,14 +36,14 @@ public class Ansii
 	public static final String BRIGHT_RED_BG = "\033[101m";
 	public static final String BRIGHT_GREEN_FG = "\033[92m";
 	public static final String BRIGHT_GREEN_BG = "\033[102m";
-	public static final String BRIG_YELLOW_FG = "\033[93m";
-	public static final String BRIG_YELLOW_BG = "\033[103m";
-	public static final String BRIG_BLUE_FG = "\033[94m";
-	public static final String BRIG_BLUE_BG = "\033[104m";
-	public static final String BRIG_MAGENTA_FG = "\033[95m";
-	public static final String BRIG_MAGENTA_BG = "\033[105m";
-	public static final String BRIG_CYAN_FG = "\033[96m";
-	public static final String BRIG_CYAN_BG = "\033[106m";
-	public static final String BRIG_WHITE_FG = "\033[97m";
-	public static final String BRIG_WHITE_BG = "\033[107m";
+	public static final String BRIGHT_YELLOW_FG = "\033[93m";
+	public static final String BRIGHT_YELLOW_BG = "\033[103m";
+	public static final String BRIGHT_BLUE_FG = "\033[94m";
+	public static final String BRIGHT_BLUE_BG = "\033[104m";
+	public static final String BRIGHT_MAGENTA_FG = "\033[95m";
+	public static final String BRIGHT_MAGENTA_BG = "\033[105m";
+	public static final String BRIGHT_CYAN_FG = "\033[96m";
+	public static final String BRIGHT_CYAN_BG = "\033[106m";
+	public static final String BRIGHT_WHITE_FG = "\033[97m";
+	public static final String BRIGHT_WHITE_BG = "\033[107m";
 }
