@@ -6,8 +6,6 @@ import client.threads.Recepter;
 import java.io.IOException;
 import java.net.Socket;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 
 /**
  * Classe du principale du Client.
