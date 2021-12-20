@@ -27,8 +27,8 @@ public class Client
 		try
 		{
 			this.s = new Socket( addr, port );
-			this.in = new Recepter( this );
 			this.out = new Emitter( this );
+			this.in = new Recepter( this );
 
 			new Thread( this.in ).start();
 			new Thread( this.out ).start();
@@ -37,8 +37,8 @@ public class Client
 	}
 
 
-	public Client() { this( "127.0.0.1", 9000 ); }
-	public Client( String addr ) { this( addr, 9000 ); }
+	public Client() { this( "localhost", 6000 ); }
+	public Client( String addr ) { this( addr, 6000 ); }
 	public Client( int port ) { this( "localhost", port ); }
 
 

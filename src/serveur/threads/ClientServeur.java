@@ -21,16 +21,14 @@ public class ClientServeur implements Runnable
 
 	public ClientServeur( Serveur serveur, Socket s )
 	{
-		System.out.println( "1test");
 		this.serveur = serveur;
 		this.s = s;
 		try 
 		{
-			System.out.println( "2test");
-			this.in = new ObjectInputStream( this.s.getInputStream() );
-			System.out.println( "3test");
+			// Il est obligatoire de récupérer le OutputStream avant le InputStream 
+			// sinon le programme bloque à cette étape.
 			this.out = new ObjectOutputStream( this.s.getOutputStream() );
-			System.out.println( "4test");
+			this.in = new ObjectInputStream( this.s.getInputStream() );
 		}
 		catch ( IOException e ) { e.printStackTrace(); }
 	}
