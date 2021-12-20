@@ -44,7 +44,7 @@ public class Message implements Serializable
 
 	public String toString()
 	{
-		String res = this.auteur != null ? (Ansii.CYAN_FG + this.auteur + " : " + Ansii.RESET) : "";
+		String res = this.auteur != null ? (this.auteur + " : ") : "";
 		return res + Ansii.RESET + this.msgContent;
 	}
 }
