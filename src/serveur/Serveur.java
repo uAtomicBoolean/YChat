@@ -2,6 +2,7 @@ package serveur;
 
 import utils.Ansii;
 import message.Message;
+import message.Auteur;
 import serveur.threads.ClientServeur;
 
 import java.io.IOException;
@@ -21,10 +22,14 @@ public class Serveur
 
 	private ArrayList<ClientServeur> clients;
 
+	private Auteur auteurServeur;
+
 
 	public Serveur()
 	{
 		this.clients = new ArrayList<ClientServeur>();
+		this.auteurServeur = new Auteur( "YChat", Ansii.RED_FG );
+
 		try { this.ss = new ServerSocket( 6000 ); }
 		catch( IOException e ) { e.printStackTrace(); }
 
@@ -54,7 +59,7 @@ public class Serveur
 				this.clients.add( client );
 				new Thread( client ).start();
 
-				System.out.println( "Nouveau client connecté!" );
+				this.sendMessagesToClients( "Nouveau client connecté!" );
 			}
 			catch( IOException e ) { e.printStackTrace(); }
 		}
@@ -66,13 +71,26 @@ public class Serveur
 	 * @param sender Le socket de la connexion avec l'envoyeur du message.
 	 * @param msg Le message à transférer aux autres clients.
 	 */
-	public void sendToClients( ClientServeur sender, Message msg )
+	public void redirectToClients( ClientServeur sender, Message msg )
 	{
 		for ( ClientServeur client: this.clients )
 		{
 			if ( client != sender )
 				client.sendMessage( msg );
 		}
+	}
+
+
+	/**
+	 * Envoie un message à tout les clients connectés au serveur.
+	 * @param msgContent Le message à envoyer aux clients.
+	 */
+	public void sendMessagesToClients( String msgContent )
+	{
+		Message msg = new Message( this.auteurServeur, msgContent );
+		System.out.println( msg );
+		for ( ClientServeur client: this.clients )
+			client.sendMessage( msg );
 	}
 
 

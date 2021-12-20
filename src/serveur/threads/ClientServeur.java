@@ -50,7 +50,7 @@ public class ClientServeur implements Runnable
 		{
 			try
 			{
-				this.serveur.sendToClients( this, (Message)this.in.readObject() );
+				this.serveur.redirectToClients( this, (Message)this.in.readObject() );
 			}
 			catch ( IOException e ) { e.printStackTrace(); }
 			catch ( ClassNotFoundException e ) { e.printStackTrace(); }
