@@ -66,6 +66,12 @@ public class Serveur
 	}
 
 
+	public void removeClient( ClientServeur client ) 
+	{
+		this.clients.remove( client );
+	}
+
+
 	/**
 	 * Envoi à tout les clients qui ne sont pas le client 'sender' le message passé en paramètre.
 	 * @param sender Le socket de la connexion avec l'envoyeur du message.
