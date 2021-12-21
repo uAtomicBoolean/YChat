@@ -46,4 +46,28 @@ public class Ansii
 	public static final String BRIGHT_CYAN_BG = "\033[106m";
 	public static final String BRIGHT_WHITE_FG = "\033[97m";
 	public static final String BRIGHT_WHITE_BG = "\033[107m";
+
+
+	/**
+	 * Renvoie une chaine de caractère contenant la couleur affilié à la chaine passée en paramètre.
+	 * Si la couleur demandée n'existe pas, alors 'null' est renvoyé.
+	 * @param couleur Une chaine de caractère indiquant la couleur voulue.
+	 * @return Le code ANSII de la couleur.
+	 */
+	public static String getColor( String couleur )
+	{
+		switch ( couleur.toLowerCase() )
+		{
+			case "noire": return BLACK_FG;
+			case "rouge": return RED_FG;
+			case "vert": return GREEN_FG;
+			case "jaune": return YELLOW_FG;
+			case "bleu": return BLUE_FG;
+			case "magenta": return MAGENTA_FG;
+			case "cyan": return CYAN_FG;
+			case "blanc": return WHITE_FG;
+			case "gris": return GRAY_FG;
+		}
+		return null;
+	}
 }
