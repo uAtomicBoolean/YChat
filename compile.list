@@ -7,9 +7,10 @@ src/client/threads/Recepter.java
 
 src/gui/YChat.java
 src/gui/AffichageMessages.java
+src/gui/EnvoiMessage.java
 
 src/message/Message.java
-src/message/Auteur.javas
+src/message/Auteur.java
 
 src/serveur/Serveur.java
 src/serveur/threads/ClientServeur.java
