@@ -1,5 +1,6 @@
 package serveur;
 
+import utils.Ansii;
 import message.Message;
 import message.Auteur;
 import serveur.threads.ClientServeur;
@@ -27,7 +28,7 @@ public class Serveur
 	public Serveur()
 	{
 		this.clients = new ArrayList<ClientServeur>();
-		this.auteurServeur = new Auteur( "YChat" );
+		this.auteurServeur = new Auteur( "YChat", Ansii.RED_FG );
 
 		try { this.ss = new ServerSocket( 6000 ); }
 		catch( IOException e ) { e.printStackTrace(); }
@@ -44,11 +45,21 @@ public class Serveur
 			try
 			{
 				client = new ClientServeur( this, this.ss.accept() );
+				
+				// Envoi de la bannière du serveur.
+				client.sendMessage( new Message( Ansii.YELLOW_FG + Ansii.BLINK + 
+					"_____.___._________   ___ ___    ________________\n" +
+					"\\__  |   |\\_   ___ \\ /   |   \\  /  _  \\__    ___/\n" +
+					" /   |   |/    \\  \\//    ~    \\/  /_\\  \\|    |\n" +
+					" \\____   |\\     \\___\\    Y    /    |    \\    |\n" +
+					" / ______| \\______  /\\___|_  /\\____|__  /____|\n" +
+					" \\/               \\/       \\/         \\/\n" + Ansii.RESET
+				));
 
 				this.clients.add( client );
 				new Thread( client ).start();
 
-				System.out.println( "Nouveau client connecté!" );
+				this.sendMessagesToClients( "Nouveau client connecté!" );
 			}
 			catch( IOException e ) { e.printStackTrace(); }
 		}

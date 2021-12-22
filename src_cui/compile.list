@@ -1,0 +1,14 @@
+-d ./bin
+-encoding utf8
+
+src/client/Client.java
+src/client/threads/Emitter.java
+src/client/threads/Recepter.java
+
+src/serveur/Serveur.java
+src/serveur/threads/ClientServeur.java
+
+src/utils/Ansii.java
+
+src/message/Message.java
+src/message/Auteur.java
