@@ -9,6 +9,8 @@ import javax.swing.JFrame;
 public class YChat extends JFrame 
 {
 	private AffichageMessages pnlAffMessages;
+	private EnvoiMessage pnlEnvMessage;
+
 	private Client client;
 
 
@@ -20,8 +22,12 @@ public class YChat extends JFrame
 		this.client = new Client( this );
 
 		this.pnlAffMessages = new AffichageMessages( this );
-		this.add( this.pnlAffMessages );    
+		this.pnlEnvMessage = new EnvoiMessage( this );
 
+
+		this.add( this.pnlAffMessages );    
+		this.add( this.pnlEnvMessage );
+		
 
 		this.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		this.setVisible( true );
