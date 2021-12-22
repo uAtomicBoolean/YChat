@@ -1,5 +1,7 @@
 package message;
 
+import utils.Ansii;
+
 import java.io.Serializable;
 
 
@@ -34,15 +36,15 @@ public class Message implements Serializable
 	 * @param pseudo Le pseudo de l'auteur.
 	 * @param couleur La couleur de l'auteur pour l'affichage dans la console (code ANSII).
 	 */
-	public void setAuteur( String pseudo )
+	public void setAuteur( String pseudo, String couleur )
 	{
-		this.auteur = new Auteur( pseudo );
+		this.auteur = new Auteur( pseudo, couleur );
 	}
 
 
 	public String toString()
 	{
 		String res = this.auteur != null ? (this.auteur + " : ") : "";
-		return res + this.msgContent;
+		return res + Ansii.RESET + this.msgContent;
 	}
 }
