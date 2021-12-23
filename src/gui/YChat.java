@@ -24,7 +24,6 @@ public class YChat extends JFrame
 		this.pnlAffMessages = new AffichageMessages( this );
 		this.pnlEnvMessage = new EnvoiMessage( this );
 
-
 		this.add( this.pnlAffMessages );    
 		this.add( this.pnlEnvMessage );
 		
