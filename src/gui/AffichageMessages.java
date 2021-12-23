@@ -24,6 +24,6 @@ public class AffichageMessages extends JPanel
 
 	public void updateMessage( Message msg )
 	{
-		this.affMess.setText( msg.toString() );
+		this.affMess.setText( msg.getContent() );
 	}
 }

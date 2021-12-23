@@ -49,6 +49,7 @@ public class Serveur
 				new Thread( client ).start();
 
 				System.out.println( "Nouveau client connecté!" );
+				client.sendMessage( new Message( "Bonjour toi" ) );
 			}
 			catch( IOException e ) { e.printStackTrace(); }
 		}
